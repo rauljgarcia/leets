@@ -15,6 +15,47 @@ Input: num = "52"
 Output: "5"
 Explanation: The only non-empty substrings are "5", "2", and "52".
              "5" is the only odd number.
+
+***Of my 3 implementations #2 was fastest
 '''
-def largest_odd_number(num):
-    pass
+def lrg_odd1(num):
+    '''
+    Implementation 1
+    Results: 
+        Runtime: beats 6.75% of users
+        Memory: beats 39.14% of users
+    '''
+    result = ""
+    for i in range(len(num)):
+        if int(num[i])%2 == 1:
+            result = num[:i+1]
+    return result
+
+def lrg_odd2(num):
+    '''
+    Implementation 2
+    Results: 
+        Runtime: beats 47.27% of users
+        Memory: beats 18.68% of users
+    '''
+    if int(num[-1]) % 2 == 1:
+        return num
+    for i in range(-1, -len(num)-1, -1):
+        if int(num[i]) % 2 == 1:
+            return(num[:i+1])
+    return ""
+
+def lrg_odd3(num):
+    '''
+    Implementation 3
+    Results: 
+        Runtime: beats 7.24% of users
+        Memory: beats 67.7% of users
+    '''
+    if int(num[-1]) % 2 == 1:
+            return num
+    result = ""
+    for i in range(len(num)):
+        if int(num[i])%2 == 1:
+            result = num[:i+1]
+    return result
